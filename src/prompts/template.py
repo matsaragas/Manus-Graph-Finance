@@ -36,6 +36,9 @@ class OpenManusPromptTemplate:
             template=OpenManusPromptTemplate.get_prompt_template(prompt_name),
         ).format(CURRENT_TIME=current_time, **state)
 
+        # Combine system prompt with existing messages
+        return [{"role": "system", "content": system_prompt}] + state["messages"]
+
 
 
 
